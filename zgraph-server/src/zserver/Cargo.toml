@@ -1,0 +1,70 @@
+[package]
+name = "zserver"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+anyhow = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+axum = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+zvec-kernels = { path = "../zvec-kernels" }
+zexec-engine = { path = "../zexec-engine" }
+zsql-parser = { path = "../zsql-parser" }
+zauth = { path = "../zauth" }
+futures-util = "0.3"
+tower = "0.5"
+tower-http = { version = "0.5", features = ["fs", "cors", "limit", "normalize-path", "sensitive-headers", "trace"] }
+validator = { version = "0.16", features = ["derive"] }
+regex = "1.0"
+zcore-storage = { path = "../zcore-storage" }
+zcore-catalog = { path = "../zcore-catalog" }
+sha2 = { workspace = true }
+hex = "0.4"
+zcollections = { path = "../zcollections" }
+simd-json = { workspace = true }
+flate2 = "1"
+zann-hnsw = { path = "../zann-hnsw" }
+tokio-util = { version = "0.7", features = ["codec","io-util"] }
+async-compression = { version = "0.4", features = ["tokio","gzip"] }
+bytes = "1"
+zbrain = { path = "../zbrain" }
+zworker = { path = "../zworker" }
+uuid = { workspace = true }
+chrono = { workspace = true }
+zpermissions = { version = "0.1.0", path = "../zpermissions" }
+zmesh-network = { path = "../zmesh-network" }
+zidentity = { path = "../zidentity" }
+ztransaction = { path = "../ztransaction" }
+zobservability = { path = "../zobservability" }
+# Temporarily commented out to isolate zserver compilation issues
+zevents = { path = "../zevents" }
+# zfunctions = { path = "../zfunctions" }
+# zanalytics = { path = "../zanalytics" }
+# zdomains = { path = "../zdomains" }
+# zprojects = { path = "../zprojects" }
+# zsdk-generator = { path = "../zsdk-generator" }
+# WebRTC dependencies
+webrtc = "0.8.0"
+thiserror = { workspace = true }
+bincode = "1.3"
+async-trait = { workspace = true }
+ulid = { workspace = true }
+
+[[bin]]
+name = "zserver"
+path = "src/bin/zserver.rs"
+
+[dev-dependencies]
+tempfile = "3"
+axum-test = "15"
+criterion = { version = "0.5", features = ["html_reports"] }
+tokio-test = "0.4"
+
+[[bench]]
+name = "realtime_events_performance"
+harness = false

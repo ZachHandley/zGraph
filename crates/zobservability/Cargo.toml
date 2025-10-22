@@ -1,0 +1,56 @@
+[package]
+name = "zobservability"
+version = "0.1.0"
+edition = "2021"
+authors = ["Zach Handley <zachhandley@gmail.com>"]
+description = "Production monitoring and observability for ZRUSTDB"
+
+[dependencies]
+# Metrics
+prometheus = { version = "0.13", features = ["process"] }
+
+# Tracing (simplified)
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["json", "env-filter"] }
+
+# Health checks
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.35", features = ["full"] }
+axum = { version = "0.7", features = ["json"] }
+tower = "0.4"
+tower-http = { version = "0.5", features = ["trace", "cors"] }
+
+# Async utilities
+futures = "0.3"
+anyhow = "1.0"
+thiserror = "1.0"
+
+# System monitoring
+sysinfo = "0.30"
+
+# Additional dependencies
+uuid = { version = "1.0", features = ["v4"] }
+async-trait = "0.1"
+reqwest = { version = "0.12", features = ["json"] }
+
+# Time
+chrono = { version = "0.4", features = ["serde"] }
+
+# Dependencies for service health checks
+zcore-storage = { path = "../zcore-storage" }
+zcommon = { path = "../zcommon" }
+
+[dev-dependencies]
+tokio-test = "0.4"
+hyper = { version = "1.0", features = ["full"] }
+tower = { version = "0.4", features = ["util"] }
+httpmock = "0.7"
+criterion = { version = "0.5", features = ["html_reports"] }
+proptest = "1.4"
+pretty_assertions = "1.4"
+tempfile = "3.8"
+
+[features]
+default = ["process"]
+process = ["prometheus/process"]

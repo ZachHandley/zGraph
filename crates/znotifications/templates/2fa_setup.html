@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two-Factor Authentication Setup</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .content { background: white; padding: 20px; border: 1px solid #dee2e6; border-radius: 8px; }
+        .code { background: #f1f3f4; padding: 15px; border-radius: 4px; font-family: monospace; font-size: 18px; text-align: center; margin: 20px 0; }
+        .warning { background: #fff3cd; border: 1px solid #ffeaa7; color: #856404; padding: 15px; border-radius: 4px; margin: 20px 0; }
+        .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #dee2e6; font-size: 14px; color: #6c757d; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔐 Two-Factor Authentication Setup</h1>
+        <p>Hi {{user_name}}, you've successfully enabled two-factor authentication for your account.</p>
+    </div>
+
+    <div class="content">
+        <h2>Backup Codes</h2>
+        <p>Please save these backup codes in a secure location. You can use them to access your account if you lose access to your authenticator device.</p>
+
+        <div class="code">
+            {{#each backup_codes}}
+            {{this}}<br>
+            {{/each}}
+        </div>
+
+        <div class="warning">
+            <strong>Important:</strong> Each backup code can only be used once. After using a backup code, it will no longer be valid.
+        </div>
+
+        <h3>What's Next?</h3>
+        <ul>
+            <li>Save your backup codes in a secure password manager</li>
+            <li>Test your authenticator app to ensure it's working correctly</li>
+            <li>Consider setting up multiple authentication methods for additional security</li>
+        </ul>
+
+        <h3>Need Help?</h3>
+        <p>If you're having trouble with two-factor authentication, please contact our support team or visit our help documentation.</p>
+    </div>
+
+    <div class="footer">
+        <p>This email was sent to {{user_email}} regarding your {{org_name}} account.</p>
+        <p>If you didn't request this change, please contact support immediately.</p>
+    </div>
+</body>
+</html>

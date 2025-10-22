@@ -1,0 +1,68 @@
+[package]
+name = "zauth"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = { workspace = true }
+axum = { workspace = true }
+base64 = { workspace = true }
+hmac = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+sha2 = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+argon2 = { workspace = true }
+password-hash = { workspace = true }
+rand_core = { workspace = true }
+jsonwebtoken = { workspace = true }
+ulid = { workspace = true }
+tracing = { workspace = true }
+bincode = { workspace = true }
+redb = { workspace = true }
+tower = { version = "0.4", features = ["util"] }
+zcore-storage = { path = "../zcore-storage" }
+zpermissions = { path = "../zpermissions" }
+
+# OAuth dependencies
+oauth2 = "4.4"
+reqwest = { version = "0.12", features = ["json"] }
+url = "2.5"
+uuid = { workspace = true }
+chrono = { workspace = true }
+urlencoding = "2.1"
+
+# 2FA dependencies
+totp-rs = { version = "5.7.0", features = ["qr"] }
+qrcode = "0.14.1"
+image = "0.25.8"
+webauthn-rs = { version = "0.5.2", features = ["danger-allow-state-serialisation"] }
+ring = "0.17"
+data-encoding = "2.5"
+
+# Notification integration
+znotifications = { path = "../znotifications" }
+
+# Common interfaces for metrics and health checks
+zcommon = { path = "../zcommon" }
+async-trait = "0.1"
+
+# Advanced session management dependencies
+maxminddb = "0.24"           # GeoIP database
+# uaparser = "0.6"            # User agent parsing (using simple parsing instead)
+whoami = "1.4"               # Platform detection
+ip_rfc = "0.1"               # IP address validation/analysis
+bloom = "0.3"                # Bloom filters for suspicious activity detection
+dashmap = "5.5"              # Concurrent hash map for rate limiting
+leaky-bucket = "1.0"         # Rate limiting implementation
+hex = "0.4"                   # Hex encoding/decoding
+md5 = "0.7"                   # MD5 hashing for fingerprints
+
+# Biometric authentication dependencies
+aes-gcm = "0.10"             # AES-GCM encryption for template protection
+# argon2 already included above for password hashing
+# bincode already included above for serialization
+
+[dev-dependencies]
+tempfile = "3.0"

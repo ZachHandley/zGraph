@@ -1,0 +1,77 @@
+[package]
+name = "zgraph-server"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = ["sql", "cypher", "vectors", "permissions"]
+sql = ["zsql-parser", "zfluent-sql", "datafusion"]
+cypher = []
+vectors = ["zvec-kernels", "zann-hnsw"]
+permissions = ["zpermissions"]
+full = ["sql", "cypher", "vectors", "permissions"]
+
+[dependencies]
+# Core dependencies
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+anyhow = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+async-trait = { workspace = true }
+futures-util = { workspace = true }
+
+# Storage
+fjall = { workspace = true }
+parking_lot = { workspace = true }
+indexmap = { workspace = true }
+bincode = { workspace = true }
+
+# Performance
+wide = { workspace = true }
+crossbeam = { workspace = true }
+rayon = { workspace = true }
+
+# SQL & Querying
+sqlparser = { workspace = true, optional = true }
+datafusion = { workspace = true, optional = true }
+arrow = { workspace = true, optional = true }
+
+# Web Server & HTTP
+axum = { workspace = true }
+tower = { workspace = true }
+tower-http = { workspace = true }
+hyper = { workspace = true }
+
+# Internal crates
+zgraph = { path = "../zgraph", optional = true }
+zcore-storage = { path = "../crates/zcore-storage" }
+zcore-catalog = { path = "../crates/zcore-catalog" }
+zvec-kernels = { path = "../crates/zvec-kernels", optional = true }
+zann-hnsw = { path = "../crates/zann-hnsw", optional = true }
+zfluent-sql = { path = "../crates/zfluent-sql", optional = true }
+zsql-parser = { path = "../crates/zsql-parser", optional = true }
+zpermissions = { path = "../crates/zpermissions", optional = true }
+zexec-engine = { path = "../crates/zexec-engine" }
+zauth = { path = "../crates/zauth" }
+zevents = { path = "../crates/zevents" }
+zperf-engine = { path = "../crates/zperf-engine" }
+zcommon = { path = "../crates/zcommon" }
+znotifications = { path = "../crates/znotifications" }
+zbrain = { path = "../crates/zbrain" }
+
+# Security & Auth
+jsonwebtoken = { workspace = true }
+hmac = { workspace = true }
+sha2 = { workspace = true }
+base64 = { workspace = true }
+
+# Utilities
+regex = { workspace = true }
+bytes = { workspace = true }
+hex = { workspace = true }
+axum-governor = "1.0.2"
+time = { version = "0.3.44", features = ["serde"] }

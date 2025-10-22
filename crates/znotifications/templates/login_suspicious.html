@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suspicious Login Detected</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: #fff3cd; border: 1px solid #ffeaa7; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .content { background: white; padding: 20px; border: 1px solid #dee2e6; border-radius: 8px; }
+        .alert { background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; padding: 15px; border-radius: 4px; margin: 20px 0; }
+        .details { background: #f8f9fa; padding: 15px; border-radius: 4px; margin: 20px 0; }
+        .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #dee2e6; font-size: 14px; color: #6c757d; }
+        .button { display: inline-block; padding: 12px 24px; background: #dc3545; color: white; text-decoration: none; border-radius: 4px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>⚠️ Suspicious Login Detected</h1>
+        <p>Hi {{user_name}}, we detected a login to your {{org_name}} account from an unrecognized device or location.</p>
+    </div>
+
+    <div class="content">
+        <div class="alert">
+            <strong>Security Alert:</strong> If this wasn't you, your account may be compromised.
+        </div>
+
+        <h2>Login Details</h2>
+        <div class="details">
+            <p><strong>Time:</strong> {{format_date login_time "%Y-%m-%d %H:%M:%S UTC"}}</p>
+            <p><strong>Location:</strong> {{location}}</p>
+            <p><strong>Device:</strong> {{device_info}}</p>
+            <p><strong>IP Address:</strong> {{ip_address}}</p>
+        </div>
+
+        <h3>What You Should Do</h3>
+        <ul>
+            <li><strong>If this was you:</strong> You can ignore this email, but consider enabling two-factor authentication for added security.</li>
+            <li><strong>If this wasn't you:</strong> Immediately change your password and review your account activity.</li>
+        </ul>
+
+        <a href="{{security_url}}" class="button">Secure My Account</a>
+
+        <h3>Recommended Security Measures</h3>
+        <ul>
+            <li>Enable two-factor authentication (2FA)</li>
+            <li>Use a unique, strong password</li>
+            <li>Regularly review account activity</li>
+            <li>Log out from all devices you don't recognize</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <p>This email was sent to {{user_email}} regarding your {{org_name}} account.</p>
+        <p>If you need help securing your account, please contact our support team immediately.</p>
+        <p>This is an automated security notification. Please do not reply to this email.</p>
+    </div>
+</body>
+</html>

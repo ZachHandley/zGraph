@@ -1,0 +1,80 @@
+[package]
+name = "zperf-engine"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+description = "High-performance database optimization components for ZRUSTDB"
+
+[features]
+default = ["mimalloc", "compression"]
+mimalloc = ["dep:mimalloc"]
+simd = ["wide"]
+compression = ["lz4_flex", "zstd"]
+allocator-stats = []
+
+[dependencies]
+# Core workspace dependencies
+anyhow = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+bincode = { workspace = true }
+parking_lot = { workspace = true }
+indexmap = { workspace = true }
+
+# Memory allocator optimization
+mimalloc = { version = "0.1", optional = true, default-features = false }
+
+# SIMD optimizations
+wide = { version = "0.7", optional = true }
+
+# High-performance hashing
+ahash = "0.8"
+rustc-hash = "2.0"
+
+# Compression
+lz4_flex = { version = "0.11", optional = true }
+zstd = { version = "0.13", optional = true, default-features = false }
+
+# Lock-free data structures
+crossbeam = "0.8"
+crossbeam-skiplist = "0.1"
+
+# Memory pools and allocation optimization
+bumpalo = "3.16"
+typed-arena = "2.0"
+
+# CPU feature detection
+raw-cpuid = "11.0"
+
+# Performance monitoring
+metrics = "0.23"
+metrics-exporter-prometheus = { version = "0.15", optional = true }
+
+# Atomic operations
+atomic = "0.6"
+
+# Zero-copy utilities
+bytes = "1.7"
+memmap2 = "0.9"
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }
+tempfile = "3.8"
+rand = "0.8"
+proptest = "1.4"
+
+[[bench]]
+name = "memory_allocator"
+harness = false
+
+[[bench]]
+name = "simd_operations"
+harness = false
+
+[[bench]]
+name = "compression"
+harness = false
+
+[[bench]]
+name = "hash_performance"
+harness = false

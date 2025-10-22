@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two-Factor Authentication Required</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: #fff3cd; border: 1px solid #ffeaa7; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .content { background: white; padding: 20px; border: 1px solid #dee2e6; border-radius: 8px; }
+        .button { display: inline-block; padding: 12px 24px; background: #dc3545; color: white; text-decoration: none; border-radius: 4px; margin: 20px 0; }
+        .countdown { background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; padding: 20px; border-radius: 4px; margin: 20px 0; text-align: center; font-size: 18px; font-weight: bold; }
+        .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #dee2e6; font-size: 14px; color: #6c757d; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>⚠️ Two-Factor Authentication Required</h1>
+        <p>Hi {{user_name}}, your organization requires two-factor authentication to be enabled on your account.</p>
+    </div>
+
+    <div class="content">
+        <div class="countdown">
+            {{days_remaining}} {{pluralize days_remaining "day" "days"}} remaining to enable 2FA
+        </div>
+
+        <p>Your {{org_name}} organization has implemented a security policy that requires all users to enable two-factor authentication (2FA) on their accounts.</p>
+
+        <h3>What happens after the deadline?</h3>
+        <ul>
+            <li>Your account access will be restricted until 2FA is enabled</li>
+            <li>You'll need to complete 2FA setup before you can access your account</li>
+            <li>All existing sessions will be terminated</li>
+        </ul>
+
+        <h3>Available 2FA Methods</h3>
+        <ul>
+            <li><strong>Authenticator App</strong> - Use Google Authenticator, Authy, or similar apps</li>
+            <li><strong>SMS</strong> - Receive codes via text message</li>
+            <li><strong>Hardware Keys</strong> - Use FIDO2/WebAuthn security keys</li>
+        </ul>
+
+        <a href="{{setup_url}}" class="button">Enable 2FA Now</a>
+
+        <h3>Need Help?</h3>
+        <p>If you need assistance setting up two-factor authentication, please contact your IT administrator or visit our help documentation.</p>
+    </div>
+
+    <div class="footer">
+        <p>This email was sent to {{user_email}} regarding your {{org_name}} account security policy.</p>
+        <p>This is an important security notification. Please take action before the deadline.</p>
+    </div>
+</body>
+</html>

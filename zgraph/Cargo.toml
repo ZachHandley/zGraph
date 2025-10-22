@@ -1,0 +1,75 @@
+[package]
+name = "zgraph"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = ["brute", "hnsw", "sql", "cypher", "permissions"]
+brute = []
+hnsw = ["zann-hnsw"]
+sql = ["zsql-parser", "zfluent-sql", "datafusion"]
+cypher = []
+permissions = ["zpermissions"]
+graphql = ["axum", "tower", "tower-http", "async-graphql", "async-graphql-axum", "hyper"]
+sparql = ["spargebra", "sparopt", "spareval"]
+full = ["hnsw", "sql", "cypher", "permissions", "graphql", "sparql"]
+
+[dependencies]
+# Core workspace dependencies
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+anyhow = { workspace = true }
+
+# Storage
+fjall = { workspace = true }
+parking_lot = { workspace = true }
+indexmap = { workspace = true }
+bincode = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+async-trait = { workspace = true }
+futures-util = { workspace = true }
+
+# Performance
+wide = { workspace = true }
+ahash = { workspace = true }
+crossbeam = { workspace = true }
+rayon = { workspace = true }
+hashbrown = { workspace = true }
+
+# Internal crates
+zcore-storage = { path = "../crates/zcore-storage" }
+zcore-catalog = { path = "../crates/zcore-catalog" }
+zann-hnsw = { path = "../crates/zann-hnsw", optional = true }
+zvec-kernels = { path = "../crates/zvec-kernels" }
+zexec-engine = { path = "../crates/zexec-engine" }
+
+# Optional SQL and query support
+zsql-parser = { path = "../crates/zsql-parser", optional = true }
+zfluent-sql = { path = "../crates/zfluent-sql", optional = true }
+datafusion = { workspace = true, optional = true }
+sqlparser = { workspace = true, optional = true }
+arrow = { workspace = true, optional = true }
+
+# Optional permissions support
+zpermissions = { path = "../crates/zpermissions", optional = true }
+
+# Optional GraphQL and web server support
+axum = { workspace = true, optional = true }
+tower = { workspace = true, optional = true }
+tower-http = { workspace = true, optional = true }
+async-graphql = { workspace = true, optional = true }
+async-graphql-axum = { workspace = true, optional = true }
+hyper = { workspace = true, optional = true }
+
+# Optional SPARQL support
+spargebra = { workspace = true, optional = true }
+sparopt = { workspace = true, optional = true }
+spareval = { workspace = true, optional = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }
+tokio-test = { workspace = true }

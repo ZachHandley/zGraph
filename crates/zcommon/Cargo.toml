@@ -1,0 +1,17 @@
+[package]
+name = "zcommon"
+version = "0.1.0"
+edition = "2021"
+authors = ["Zach Handley <zachhandley@gmail.com>"]
+description = "Common interfaces and utilities for ZRUSTDB"
+
+[dependencies]
+async-trait = "0.1"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.35", features = ["full"] }
+anyhow = "1.0"
+thiserror = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1.0", features = ["v4", "serde"] }
+tracing = "0.1"

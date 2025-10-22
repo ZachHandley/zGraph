@@ -1,0 +1,48 @@
+[package]
+name = "zevents"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+authors = ["ZRUSTDB contributors"]
+
+[dependencies]
+anyhow = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+axum = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+async-trait = { workspace = true }
+futures-util = { workspace = true }
+hmac = { workspace = true }
+sha2 = { workspace = true }
+base64 = { workspace = true }
+ulid = { workspace = true }
+bincode = { workspace = true }
+redb = { workspace = true }
+hex = "0.4"
+
+# Event system dependencies
+tower = { workspace = true }
+tower-http = { workspace = true }
+reqwest = { workspace = true }
+regex = { workspace = true }
+governor = { workspace = true }
+nonzero_ext = { workspace = true }
+
+# Cron scheduling
+cron = { workspace = true }
+
+# Core ZDB dependencies
+zcore-storage = { path = "../zcore-storage" }
+zbrain = { path = "../zbrain" }
+zauth = { path = "../zauth" }
+
+[dev-dependencies]
+tempfile = "3"
+tokio-test = "0.4"
+tracing-subscriber = { workspace = true }
+zexec-engine = { path = "../zexec-engine" }

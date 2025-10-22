@@ -1,0 +1,5 @@
+Your {{org_name}} verification code: {{verification_code}}
+
+This code expires in {{expires_in}} minutes.
+
+If you didn't request this code, please contact support.

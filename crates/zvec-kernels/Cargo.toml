@@ -1,0 +1,32 @@
+[package]
+name = "zvec-kernels"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[features]
+default = ["simd"]
+simd = []
+mobile-optimizations = []
+power-profiling = []
+zobservability = []
+
+[dependencies]
+anyhow = "1"
+
+# Observability dependency removed in this vendored build
+
+[dev-dependencies]
+rand = "0.8"
+criterion = { version = "0.5", features = ["html_reports"] }
+rayon = "1.8"
+
+[[bench]]
+name = "kernel_performance"
+harness = false
+
+[[bench]]
+name = "batch_operations"
+harness = false
+
+

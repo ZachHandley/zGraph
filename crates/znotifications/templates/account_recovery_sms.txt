@@ -1,0 +1,5 @@
+{{org_name}} Account Recovery: {{recovery_code}}
+
+Use this code to recover your account. Code expires in {{expires_in}} minutes.
+
+If you didn't request this, please contact support.
